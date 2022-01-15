@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/mainScreenFragment">
+
+    <fragment
+        android:id="@+id/mainScreenFragment"
+        android:name="com.example.coffeed.MainScreenFragment"
+        android:label="fragment_main_screen"
+        tools:layout="@layout/fragment_main_screen" />
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="com.example.coffeed.ItemFragment"
+        android:label="fragment_item"
+        tools:layout="@layout/fragment_item" />
+    <fragment
+        android:id="@+id/detailedItemFragment"
+        android:name="com.example.coffeed.DetailedItemFragment"
+        android:label="fragment_detailed_item"
+        tools:layout="@layout/fragment_detailed_item" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.coffeed.SettingsFragment"
+        android:label="SettingsFragment" />
+</navigation>
