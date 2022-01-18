@@ -2,6 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/mainScreenFragment"
+        android:icon="@drawable/ic_baseline_auto_stories_24"
+        android:title="Main screen" />
+
+    <item
+        android:id="@+id/coffeePhotoFragment"
+        android:icon="@drawable/ic_baseline_coffee_24"
+        android:title="Add new coffee" />
+
+    <item
         android:id="@+id/settingsFragment"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="Settings" />

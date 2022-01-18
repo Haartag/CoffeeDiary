@@ -9,7 +9,7 @@ import com.example.coffeed.databinding.FragmentItemBinding
 
 class ItemFragment : Fragment(R.layout.fragment_item) {
 
-    private var fragmentItem: FragmentItemBinding? = null
+    private var fragmentItemBinding: FragmentItemBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,11 +20,11 @@ class ItemFragment : Fragment(R.layout.fragment_item) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentItemBinding.bind(view)
-        fragmentItem = binding
+        fragmentItemBinding = binding
     }
 
     override fun onDestroyView() {
-        fragmentItem = null
+        fragmentItemBinding = null
         super.onDestroyView()
     }
 }
