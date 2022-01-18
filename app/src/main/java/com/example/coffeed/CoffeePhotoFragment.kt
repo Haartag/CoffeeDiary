@@ -44,6 +44,7 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentCoffeePhotoBinding.bind(view)
         fragmentCoffeePhotoBinding = binding
+        val defaultUri = Uri.parse("android.resource://com.example.coffeed/drawable/coffee_photo")
 
         outputDirectory = getOutputDirectory()
         cameraExecutor = Executors.newSingleThreadExecutor()
@@ -53,6 +54,10 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
 
         binding.makePhotoButton.setOnClickListener {
             takePhoto()
+        }
+        binding.skipText.setOnClickListener {
+            val action = CoffeePhotoFragmentDirections.actionCoffeePhotoFragmentToInputDescriptionFragment(defaultUri)
+            findNavController().navigate(action)
         }
     }
 
@@ -91,8 +96,7 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
-                    val msg = "Photo saved"
-                    Toast.makeText(requireContext(), "$msg $savedUri", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "photo saved in: $savedUri", Toast.LENGTH_LONG).show()
                     val action = CoffeePhotoFragmentDirections.actionCoffeePhotoFragmentToInputDescriptionFragment(savedUri)
                     findNavController().navigate(action)
                 }

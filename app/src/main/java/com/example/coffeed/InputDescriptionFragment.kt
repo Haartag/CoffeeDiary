@@ -1,15 +1,11 @@
 package com.example.coffeed
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.navigation.Navigation
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.transition.Slide
 import com.example.coffeed.databinding.FragmentInputDescriptionBinding
-import com.example.coffeed.databinding.FragmentItemBinding
 
 class InputDescriptionFragment : Fragment(R.layout.fragment_input_description) {
 
@@ -26,7 +22,18 @@ class InputDescriptionFragment : Fragment(R.layout.fragment_input_description) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentInputDescriptionBinding.bind(view)
         fragmentInputDescriptionBinding = binding
-        binding.imageView.setImageURI(args.photoUri)
+
+        binding.submitButton.setOnClickListener {
+            val coffeeItemCard = ItemCard(
+                coffeePhoto = args.photoUri,
+                name = binding.nameOfCoffeeEditText.text.toString(),
+                manufacturer = binding.manufacturerOfCoffeeEditText.text.toString(),
+                type = binding.coffeeTypeSpinner.selectedItem.toString(),
+                shortDescription = binding.shortDescriptionEditText.text.toString(),
+                longDescription = binding.longDescriptionEditText.text.toString()
+            )
+        }
+
 
     }
 

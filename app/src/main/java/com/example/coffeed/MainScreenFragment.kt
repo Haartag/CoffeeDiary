@@ -23,7 +23,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         val binding = FragmentMainScreenBinding.bind(view)
         fragmentMainScreenBinding = binding
 
-        binding.button2.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.itemFragment))
+        binding.button2.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.inputDescriptionFragment))
 
 
         //val label = findNavController().currentDestination

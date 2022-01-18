@@ -38,4 +38,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/viewFinder"
         app:layout_constraintVertical_bias="0.85"/>
+
+    <TextView
+        android:id="@+id/skipText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="#00000000"
+        android:text="@string/skip_photo"
+        android:textColor="#FFA726"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/makePhotoButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

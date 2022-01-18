@@ -44,6 +44,7 @@
         tools:layout="@layout/fragment_input_description" >
         <argument
             android:name="photoUri"
-            app:argType="android.net.Uri" />
+            app:argType="android.net.Uri"
+            />
     </fragment>
 </navigation>
