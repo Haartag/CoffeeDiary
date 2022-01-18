@@ -25,6 +25,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
 
         binding.button2.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.itemFragment))
 
+
         //val label = findNavController().currentDestination
     }
 

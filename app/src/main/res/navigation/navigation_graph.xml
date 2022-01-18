@@ -9,7 +9,11 @@
         android:id="@+id/mainScreenFragment"
         android:name="com.example.coffeed.MainScreenFragment"
         android:label="fragment_main_screen"
-        tools:layout="@layout/fragment_main_screen" />
+        tools:layout="@layout/fragment_main_screen" >
+        <action
+            android:id="@+id/action_mainScreenFragment_to_coffeePhotoFragment"
+            app:destination="@id/coffeePhotoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemFragment"
         android:name="com.example.coffeed.ItemFragment"
@@ -24,4 +28,22 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.coffeed.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/coffeePhotoFragment"
+        android:name="com.example.coffeed.CoffeePhotoFragment"
+        android:label="fragment_coffee_photo"
+        tools:layout="@layout/fragment_coffee_photo" >
+        <action
+            android:id="@+id/action_coffeePhotoFragment_to_inputDescriptionFragment"
+            app:destination="@id/inputDescriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputDescriptionFragment"
+        android:name="com.example.coffeed.InputDescriptionFragment"
+        android:label="fragment_input_description"
+        tools:layout="@layout/fragment_input_description" >
+        <argument
+            android:name="photoUri"
+            app:argType="android.net.Uri" />
+    </fragment>
 </navigation>
