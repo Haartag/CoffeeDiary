@@ -46,5 +46,8 @@
             android:name="photoUri"
             app:argType="android.net.Uri"
             />
+        <action
+            android:id="@+id/action_inputDescriptionFragment_to_mainScreenFragment"
+            app:destination="@id/mainScreenFragment" />
     </fragment>
 </navigation>

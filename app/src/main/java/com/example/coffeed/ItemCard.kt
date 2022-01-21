@@ -12,3 +12,10 @@ data class ItemCard(
     val longDescription: String = ""
 )
 
+data class PreviewItemCard(
+    val coffeePhoto: String = "android.resource://com.example.coffeed/drawable/coffee_photo",
+    val name: String = "name",
+    val manufacturer: String = "",
+    val rating: Int = 3,
+)
+

@@ -44,6 +44,8 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentCoffeePhotoBinding.bind(view)
         fragmentCoffeePhotoBinding = binding
+
+        //Default Uri, cause SafeArgs problems with defaults.
         val defaultUri = Uri.parse("android.resource://com.example.coffeed/drawable/coffee_photo")
 
         outputDirectory = getOutputDirectory()
@@ -56,11 +58,11 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
             takePhoto()
         }
         binding.skipText.setOnClickListener {
-            val action = CoffeePhotoFragmentDirections.actionCoffeePhotoFragmentToInputDescriptionFragment(defaultUri)
-            findNavController().navigate(action)
+            safeArgsToInputDescriptionFragment(defaultUri)
         }
     }
-
+    //request permission.
+    //ToDo: Change it
     private val requestPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
 
@@ -71,7 +73,7 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
                 Log.d("LOG_TAG", "permission denied by the user")
             }
         }
-
+    //Get directory to store photos
     private fun getOutputDirectory(): File {
         val mediaDir = activity?.externalMediaDirs?.firstOrNull()?.let { mFile ->
             File(mFile, resources.getString(R.string.app_name)).apply {
@@ -81,6 +83,7 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
         return if (mediaDir != null && mediaDir.exists()) mediaDir else activity?.filesDir!!
     }
 
+    //Take photo, place it in external storage, make Uri and send it via Safe Args
     private fun takePhoto() {
         val imageCapture = imageCapture ?: return
         val photoFile = File(
@@ -97,8 +100,7 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
                     Toast.makeText(requireContext(), "photo saved in: $savedUri", Toast.LENGTH_LONG).show()
-                    val action = CoffeePhotoFragmentDirections.actionCoffeePhotoFragmentToInputDescriptionFragment(savedUri)
-                    findNavController().navigate(action)
+                    safeArgsToInputDescriptionFragment(savedUri)
                 }
 
                 override fun onError(exception: ImageCaptureException) {
@@ -107,7 +109,7 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
 
             })
     }
-
+    //Default CameraX camera start
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
 
@@ -128,6 +130,12 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
                 Log.d(TAG, "startCamera: Fail because ", e)
             }
         }, ContextCompat.getMainExecutor(requireContext()))
+    }
+
+    //pass placeholder Uri to next Fragment
+    private fun safeArgsToInputDescriptionFragment(destination: Uri){
+        val action = CoffeePhotoFragmentDirections.actionCoffeePhotoFragmentToInputDescriptionFragment(destination)
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {
