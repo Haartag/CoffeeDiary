@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="160dp"
     android:layout_marginBottom="4dp">
 
     <ImageView
         android:id="@+id/coffeeCardPhoto"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/coffee_photo" />
@@ -53,4 +54,11 @@
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/coffeeCardRating"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

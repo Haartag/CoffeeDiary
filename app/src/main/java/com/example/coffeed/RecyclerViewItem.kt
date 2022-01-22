@@ -1,9 +1,11 @@
 package com.example.coffeed
 
+import android.content.Context
 import android.net.Uri
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.items.AbstractItem
 
@@ -33,7 +35,11 @@ class RecyclerViewItem(
         override fun bindView(item: RecyclerViewItem, payloads: List<Any>) {
             name.text = item.name
             manufacturer.text = item.manufacturer
-            photo.setImageURI(Uri.parse(item.photoUri))
+            Glide.with(photo.context)
+                .load(Uri.parse(item.photoUri))
+                //.sizeMultiplier(0.5F)
+                //.thumbnail(0.05F)
+                .into(photo)
             rating.text = item.rating.toString()
         }
 
