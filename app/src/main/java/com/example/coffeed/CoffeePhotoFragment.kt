@@ -46,7 +46,7 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
         fragmentCoffeePhotoBinding = binding
 
         //Default Uri, cause SafeArgs problems with defaults.
-        val defaultUri = Uri.parse("android.resource://com.example.coffeed/drawable/coffee_photo")
+        val defaultUri = "android.resource://com.example.coffeed/drawable/coffee_photo"
 
         outputDirectory = getOutputDirectory()
         cameraExecutor = Executors.newSingleThreadExecutor()
@@ -98,7 +98,7 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
         imageCapture.takePicture(outputOption, ContextCompat.getMainExecutor(requireContext()),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                    val savedUri = Uri.fromFile(photoFile)
+                    val savedUri = Uri.fromFile(photoFile).toString()
                     Toast.makeText(requireContext(), "photo saved in: $savedUri", Toast.LENGTH_LONG).show()
                     safeArgsToInputDescriptionFragment(savedUri)
                 }
@@ -133,7 +133,7 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
     }
 
     //pass placeholder Uri to next Fragment
-    private fun safeArgsToInputDescriptionFragment(destination: Uri){
+    private fun safeArgsToInputDescriptionFragment(destination: String){
         val action = CoffeePhotoFragmentDirections.actionCoffeePhotoFragmentToInputDescriptionFragment(destination)
         findNavController().navigate(action)
     }

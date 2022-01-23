@@ -13,7 +13,8 @@ class RecyclerViewItem(
     val name: String? = null,
     val manufacturer: String? = null,
     val photoUri: String? = null,
-    val rating: Int? = null
+    val rating: Int? = null,
+    val uid: Int? = null
 ) : AbstractItem<RecyclerViewItem.ViewHolder>() {
 
     override val type: Int

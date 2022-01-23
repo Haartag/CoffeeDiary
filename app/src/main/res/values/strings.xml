@@ -30,6 +30,7 @@
     <string name="long_description_of_coffee">Long description of coffee</string>
     <string name="submit">Submit</string>
     <string name="skip_photo"><u>skip photo</u></string>
+    <string name="delete_this"><font fgcolor='#FF1400'>Delete this</font></string>
 
     <string-array name="coffeeTypes">
         <item>Espresso</item>

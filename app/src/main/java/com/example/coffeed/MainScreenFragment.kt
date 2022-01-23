@@ -1,9 +1,13 @@
 package com.example.coffeed
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.Slide
 import com.example.coffeed.database.CoffeeDatabase
@@ -34,15 +38,25 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         val fastAdapter = FastAdapter.with(itemAdapter)
         //If there is something in DB, take information for RecyclerView and make it.
         if (db.coffeeDao.countType() > 0) {
-            val mainList = mutableListOf<PreviewItemCard>()
-            for (i in 1..db.coffeeDao.countType()) {
-                mainList.add(db.coffeeDao.getPreviewItemById(i))
-            }
+            val mainList = db.coffeeDao.getAllPreviewItems()
             val ITEMS = mutableListOf<RecyclerViewItem>()
             mainList.forEach { ITEMS.add(it.toRecyclerViewItem()) }
             itemAdapter.add(ITEMS)
             binding.recyclerView.layoutManager = LinearLayoutManager(context)
             binding.recyclerView.adapter = fastAdapter
+        }
+        //OnClick - go to ItemFragment
+        fastAdapter.onClickListener = { view, adapter, item, position ->
+            val action =
+                MainScreenFragmentDirections.actionMainScreenFragmentToItemFragment(item.uid ?: 1)
+            findNavController().navigate(action)
+            true
+        }
+        //onLongClick - inflate item menu
+        fastAdapter.onLongClickListener = { view, adapter, item, position ->
+            showPopupMenu(view, item.uid!!)
+            Toast.makeText(activity, "$position, $item", Toast.LENGTH_SHORT).show()
+            true
         }
     }
 
@@ -55,8 +69,27 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         name = name,
         manufacturer = manufacturer,
         photoUri = coffeePhoto,
-        rating = rating
+        rating = rating,
+        uid = uid
     )
+
+    private fun showPopupMenu(view: View, uid: Int) {
+        val popup = PopupMenu(context, view)
+        popup.inflate(R.menu.recycler_view_menu)
+        popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem? ->
+            when (item!!.itemId) {
+                R.id.menu_recycler_change -> {
+                    Toast.makeText(context, item.title, Toast.LENGTH_SHORT).show()
+                }
+                R.id.menu_recycler_delete -> {
+                    val db = CoffeeDatabase.getInstance(requireActivity().applicationContext)
+                    db.coffeeDao.deleteItemById(uid)
+                }
+            }
+            true
+        })
+        popup.show()
+    }
 
 
 }
