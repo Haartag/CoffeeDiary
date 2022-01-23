@@ -41,7 +41,7 @@ class RecyclerViewItem(
                 //.sizeMultiplier(0.5F)
                 //.thumbnail(0.05F)
                 .into(photo)
-            rating.text = item.rating.toString()
+            rating.text = item.uid.toString()
         }
 
         override fun unbindView(item: RecyclerViewItem) {

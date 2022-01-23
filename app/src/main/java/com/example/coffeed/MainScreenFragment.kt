@@ -19,6 +19,10 @@ import com.mikepenz.fastadapter.adapters.ItemAdapter
 class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
 
     private var fragmentMainScreenBinding: FragmentMainScreenBinding? = null
+    private val ITEMS = mutableListOf<RecyclerViewItem>()
+    //fastAdapter
+    private val itemAdapter = ItemAdapter<RecyclerViewItem>()
+    private val fastAdapter = FastAdapter.with(itemAdapter)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,13 +37,11 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         fragmentMainScreenBinding = binding
         val db = CoffeeDatabase.getInstance(requireActivity().applicationContext)
 
-        //fastAdapter
-        val itemAdapter = ItemAdapter<RecyclerViewItem>()
-        val fastAdapter = FastAdapter.with(itemAdapter)
+
         //If there is something in DB, take information for RecyclerView and make it.
         if (db.coffeeDao.countType() > 0) {
             val mainList = db.coffeeDao.getAllPreviewItems()
-            val ITEMS = mutableListOf<RecyclerViewItem>()
+            //val ITEMS = mutableListOf<RecyclerViewItem>()
             mainList.forEach { ITEMS.add(it.toRecyclerViewItem()) }
             itemAdapter.add(ITEMS)
             binding.recyclerView.layoutManager = LinearLayoutManager(context)
@@ -64,7 +66,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         fragmentMainScreenBinding = null
         super.onDestroyView()
     }
-
+    //convert ItemCard in RecyclerViewItem ToDo: change that
     private fun PreviewItemCard.toRecyclerViewItem() = RecyclerViewItem(
         name = name,
         manufacturer = manufacturer,
@@ -82,13 +84,20 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
                     Toast.makeText(context, item.title, Toast.LENGTH_SHORT).show()
                 }
                 R.id.menu_recycler_delete -> {
-                    val db = CoffeeDatabase.getInstance(requireActivity().applicationContext)
-                    db.coffeeDao.deleteItemById(uid)
+                    deleteItem(uid)
                 }
             }
             true
         })
         popup.show()
+    }
+
+    private fun deleteItem(uid: Int) {
+        val db = CoffeeDatabase.getInstance(requireActivity().applicationContext)
+        db.coffeeDao.deleteItemById(uid)
+        ITEMS.removeIf{RecyclerViewItem -> RecyclerViewItem.uid == uid}
+        itemAdapter.clear()
+        itemAdapter.add(ITEMS)
     }
 
 
