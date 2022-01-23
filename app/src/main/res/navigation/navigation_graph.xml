@@ -13,12 +13,22 @@
         <action
             android:id="@+id/action_mainScreenFragment_to_coffeePhotoFragment"
             app:destination="@id/coffeePhotoFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemFragment"
         android:name="com.example.coffeed.ItemFragment"
         android:label="fragment_item"
-        tools:layout="@layout/fragment_item" />
+        tools:layout="@layout/fragment_item" >
+        <action
+            android:id="@+id/action_itemFragment_to_detailedItemFragment"
+            app:destination="@id/detailedItemFragment" />
+        <argument
+            android:name="uid"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/detailedItemFragment"
         android:name="com.example.coffeed.DetailedItemFragment"
@@ -44,7 +54,10 @@
         tools:layout="@layout/fragment_input_description" >
         <argument
             android:name="photoUri"
-            app:argType="android.net.Uri"
+            app:argType="string"
             />
+        <action
+            android:id="@+id/action_inputDescriptionFragment_to_mainScreenFragment"
+            app:destination="@id/mainScreenFragment" />
     </fragment>
 </navigation>
