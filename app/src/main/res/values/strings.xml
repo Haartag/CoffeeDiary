@@ -31,6 +31,9 @@
     <string name="submit">Submit</string>
     <string name="skip_photo"><u>skip photo</u></string>
     <string name="delete_this"><font fgcolor='#FF1400'>Delete this</font></string>
+    <string name="all_additional_information">All additional information</string>
+    <string name="step_2">Step 2. \n Enter the name and manufacturer of the coffee, the brew type, and rate it.</string>
+    <string name="step_3">Step 3. \n Enter a short and long description of the coffee.</string>
 
     <string-array name="coffeeTypes">
         <item>Espresso</item>

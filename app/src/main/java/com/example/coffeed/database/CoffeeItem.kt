@@ -13,9 +13,8 @@ data class CoffeeItem(
     @ColumnInfo val name: String,
     @ColumnInfo val manufacturer: String,
     @ColumnInfo val type: String,
-    @ColumnInfo val rating: Int,
+    @ColumnInfo val rating: Float,
     @ColumnInfo val shortDescription: String,
     @ColumnInfo val longDescription: String,
-    //@ColumnInfo val grindPhoto: String,
-    //@ColumnInfo val additionalDescription: String
+
 )

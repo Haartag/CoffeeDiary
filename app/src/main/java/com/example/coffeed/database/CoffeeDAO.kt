@@ -20,7 +20,7 @@ interface CoffeeDAO {
     @Query("SELECT * FROM coffeeDB")
     fun getAll(): Array<CoffeeItem>
 
-    @Query("SELECT coffeePhoto, name, manufacturer, rating, uid FROM coffeeDB")
+    @Query("SELECT coffeePhoto, name, manufacturer, rating, type, uid FROM coffeeDB")
     fun getAllPreviewItems(): Array<PreviewItemCard>
 
     @Query("SELECT COUNT(*) FROM coffeeDB")
@@ -29,7 +29,7 @@ interface CoffeeDAO {
     @Query("SELECT * FROM coffeeDB WHERE uid = :uid")
     fun getAllById(uid: Int): CoffeeItem
 
-    @Query("SELECT coffeePhoto, name, manufacturer, rating, uid FROM coffeeDB WHERE uid = :uid")
+    @Query("SELECT coffeePhoto, name, manufacturer, rating, type, uid FROM coffeeDB WHERE uid = :uid")
     fun getPreviewItemById(uid: Int): PreviewItemCard
 
     @Query("SELECT * FROM coffeeDB WHERE uid = :uid")

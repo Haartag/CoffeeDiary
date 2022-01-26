@@ -57,7 +57,19 @@
             app:argType="string"
             />
         <action
-            android:id="@+id/action_inputDescriptionFragment_to_mainScreenFragment"
+            android:id="@+id/action_inputDescriptionFragment_to_inputDescriptionFragment2"
+            app:destination="@id/inputDescriptionFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputDescriptionFragment2"
+        android:name="com.example.coffeed.InputDescriptionFragment2"
+        android:label="fragment_input_description_2"
+        tools:layout="@layout/fragment_input_description_2" >
+        <action
+            android:id="@+id/action_inputDescriptionFragment2_to_mainScreenFragment"
             app:destination="@id/mainScreenFragment" />
+        <argument
+            android:name="halfItem"
+            app:argType="com.example.coffeed.ItemCard" />
     </fragment>
 </navigation>

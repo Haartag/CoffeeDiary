@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.Uri
 import android.view.View
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.mikepenz.fastadapter.FastAdapter
@@ -13,7 +14,8 @@ class RecyclerViewItem(
     val name: String? = null,
     val manufacturer: String? = null,
     val photoUri: String? = null,
-    val rating: Int? = null,
+    val rating: Float? = null,
+    val brewType: String? = null,
     val uid: Int? = null
 ) : AbstractItem<RecyclerViewItem.ViewHolder>() {
 
@@ -31,7 +33,8 @@ class RecyclerViewItem(
         var name: TextView = view.findViewById(R.id.coffeeCardName)
         var manufacturer: TextView = view.findViewById(R.id.coffeeCardManufacturer)
         var photo: ImageView = view.findViewById(R.id.coffeeCardPhoto)
-        var rating: TextView = view.findViewById(R.id.coffeeCardRatingTemp)
+        var rating: RatingBar = view.findViewById(R.id.itemRatingBar)
+        var brewType: ImageView = view.findViewById(R.id.brewType)
 
         override fun bindView(item: RecyclerViewItem, payloads: List<Any>) {
             name.text = item.name
@@ -41,14 +44,21 @@ class RecyclerViewItem(
                 //.sizeMultiplier(0.5F)
                 //.thumbnail(0.05F)
                 .into(photo)
-            rating.text = item.uid.toString()
+            rating.rating = item.rating ?: 0F
+            when (item.brewType) {
+                "Espresso" -> brewType.setImageResource(R.drawable.espresso)
+                "Pourover" -> brewType.setImageResource(R.drawable.pourover)
+                "Dzezva" -> brewType.setImageResource(R.drawable.coffee_placeholder)
+                "Moka" -> brewType.setImageResource(R.drawable.coffee_placeholder)
+            }
+
         }
 
         override fun unbindView(item: RecyclerViewItem) {
             name.text = null
             manufacturer.text = null
             photo.setImageDrawable(null)
-            rating.text = null
+            //rating.rating = null
         }
 
     }
