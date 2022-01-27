@@ -41,6 +41,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/shortDescriptionEditText"
+                style="@style/MediumText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -65,6 +66,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/longDescriptionEditText"
+                style="@style/MediumText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -81,6 +83,7 @@
 
     <Button
         android:id="@+id/submitButton"
+        style="@style/ButtonText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"

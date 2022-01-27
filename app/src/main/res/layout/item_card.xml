@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:background="@drawable/cardalike"
     android:layout_height="160dp"
-    android:layout_marginBottom="4dp"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp"
     android:layout_marginStart="3dp"
     android:layout_marginEnd="3dp"
     android:elevation="8dp">
@@ -34,6 +35,7 @@
 
     <TextView
         android:id="@+id/coffeeCardManufacturer"
+        style="@style/MediumText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

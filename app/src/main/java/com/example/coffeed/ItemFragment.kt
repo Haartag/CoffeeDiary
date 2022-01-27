@@ -39,6 +39,7 @@ class ItemFragment : Fragment(R.layout.fragment_item) {
         binding.manufacturerOfCoffeeText.text = itemCard.manufacturer
         binding.shortDescriptionText.text = itemCard.shortDescription
         binding.longDescriptionText.text = itemCard.longDescription
+        binding.cardRatingBar.rating = itemCard.rating
     }
 
     override fun onDestroyView() {

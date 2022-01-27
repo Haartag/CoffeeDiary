@@ -30,6 +30,7 @@
 
     <Button
         android:id="@+id/makePhotoButton"
+        style="@style/ButtonText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/take_photo_button"
@@ -41,12 +42,13 @@
 
     <TextView
         android:id="@+id/skipText"
+        style="@style/SmallText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="14dp"
         android:background="#00000000"
         android:text="@string/skip_photo"
-        android:textColor="#FFA726"
+        android:textColor="@color/main_yellow_dark2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/makePhotoButton" />
