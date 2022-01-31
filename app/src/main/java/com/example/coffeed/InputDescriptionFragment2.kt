@@ -3,6 +3,7 @@ package com.example.coffeed
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -11,6 +12,7 @@ import com.example.coffeed.database.CoffeeDatabase
 import com.example.coffeed.database.CoffeeItem
 import com.example.coffeed.databinding.FragmentInputDescription2Binding
 import com.example.coffeed.databinding.FragmentInputDescriptionBinding
+import kotlinx.coroutines.launch
 
 class InputDescriptionFragment2 : Fragment(R.layout.fragment_input_description_2) {
 
@@ -51,7 +53,7 @@ class InputDescriptionFragment2 : Fragment(R.layout.fragment_input_description_2
                 coffeeItemCard.shortDescription,
                 coffeeItemCard.longDescription,
             )
-            db.coffeeDao.add(input)
+            lifecycleScope.launch { db.coffeeDao.add(input) }
             findNavController().navigate(R.id.action_inputDescriptionFragment2_to_mainScreenFragment)
 
         }

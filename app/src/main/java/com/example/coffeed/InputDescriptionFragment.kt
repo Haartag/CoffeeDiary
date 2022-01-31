@@ -2,18 +2,18 @@ package com.example.coffeed
 
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.Slide
-import com.example.coffeed.database.CoffeeDatabase
-import com.example.coffeed.database.CoffeeItem
 import com.example.coffeed.databinding.FragmentInputDescriptionBinding
 
 class InputDescriptionFragment : Fragment(R.layout.fragment_input_description) {
 
     private var fragmentInputDescriptionBinding: FragmentInputDescriptionBinding? = null
     private val args: InputDescriptionFragmentArgs by navArgs()
+    private lateinit var selectedBrewType: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,13 +26,33 @@ class InputDescriptionFragment : Fragment(R.layout.fragment_input_description) {
         val binding = FragmentInputDescriptionBinding.bind(view)
         fragmentInputDescriptionBinding = binding
 
+        //set spinner icons
+        val brewTypes: List<String> = ArrayList(listOf(*resources.getStringArray(R.array.coffeeTypes)))
+        val adapter = SpinnerAdapter(requireContext(), brewTypes)
+        adapter.setDropDownViewResource(R.layout.item_spinner)
+        binding.coffeeTypeSpinner.adapter = adapter
+
+        binding.coffeeTypeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                adapterView: AdapterView<*>?,
+                view: View?,
+                i: Int,
+                l: Long
+            ) {
+                selectedBrewType = brewTypes[i]
+                //Toast.makeText(requireContext(), "You selected: $selectedBrewType", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
         //Make half ItemCard from collected data, then transfer it to next Fragment
         binding.submitButton.setOnClickListener {
             val coffeeItemCard = ItemCard(
                 coffeePhoto = args.photoUri,
                 name = binding.nameOfCoffeeEditText.text.toString(),
                 manufacturer = binding.manufacturerOfCoffeeEditText.text.toString(),
-                type = binding.coffeeTypeSpinner.selectedItem.toString(),
+                type = selectedBrewType,//binding.coffeeTypeSpinner.selectedItem.toString(),
                 rating = binding.ratingBar.rating,
                 shortDescription = "",//binding.shortDescriptionEditText.text.toString(),
                 longDescription = ""//binding.longDescriptionEditText.text.toString()

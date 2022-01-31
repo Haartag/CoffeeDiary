@@ -9,32 +9,32 @@ import com.example.coffeed.RecyclerViewItem
 @Dao
 interface CoffeeDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun add(item: CoffeeItem)
+    suspend fun add(item: CoffeeItem)
 
     @Update
-    fun update(item: CoffeeItem)
+    suspend fun update(item: CoffeeItem)
 
     @Delete
-    fun delete(item: CoffeeItem)
+    suspend fun delete(item: CoffeeItem)
 
     @Query("SELECT * FROM coffeeDB")
-    fun getAll(): Array<CoffeeItem>
+    suspend fun getAll(): Array<CoffeeItem>
 
     @Query("SELECT coffeePhoto, name, manufacturer, rating, type, uid FROM coffeeDB")
-    fun getAllPreviewItems(): Array<PreviewItemCard>
+    suspend fun getAllPreviewItems(): Array<PreviewItemCard>
 
     @Query("SELECT COUNT(*) FROM coffeeDB")
-    fun countType(): Int
+    suspend fun countType(): Int
 
     @Query("SELECT * FROM coffeeDB WHERE uid = :uid")
-    fun getAllById(uid: Int): CoffeeItem
+    suspend fun getAllById(uid: Int): CoffeeItem
 
     @Query("SELECT coffeePhoto, name, manufacturer, rating, type, uid FROM coffeeDB WHERE uid = :uid")
-    fun getPreviewItemById(uid: Int): PreviewItemCard
+    suspend fun getPreviewItemById(uid: Int): PreviewItemCard
 
     @Query("SELECT * FROM coffeeDB WHERE uid = :uid")
-    fun getItemById(uid: Int): ItemCard
+    suspend fun getItemById(uid: Int): ItemCard
 
     @Query("DELETE FROM coffeeDB WHERE uid = :uid")
-    fun deleteItemById(uid: Int)
+    suspend fun deleteItemById(uid: Int)
 }

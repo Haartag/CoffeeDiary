@@ -25,7 +25,7 @@ abstract class CoffeeDatabase : RoomDatabase() {
                         "CoffeeDB"
                     )
 
-                        .allowMainThreadQueries()
+                        //.allowMainThreadQueries()
                         .build()
 
                     INSTANCE = instance

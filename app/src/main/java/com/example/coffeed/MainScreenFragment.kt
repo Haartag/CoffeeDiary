@@ -1,12 +1,15 @@
 package com.example.coffeed
 
+import android.content.ContentValues.TAG
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +19,7 @@ import com.example.coffeed.database.CoffeeItem
 import com.example.coffeed.databinding.FragmentMainScreenBinding
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
+import kotlinx.coroutines.launch
 import java.io.File
 import java.net.URI
 
@@ -41,21 +45,23 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         fragmentMainScreenBinding = binding
         val db = CoffeeDatabase.getInstance(requireActivity().applicationContext)
 
+        lifecycleScope.launch {
+            //If there is something in DB, take information for RecyclerView and make it.
+            if (db.coffeeDao.countType() > 0) {
+                val mainList = db.coffeeDao.getAllPreviewItems()
+                //clean ITEMS to prevent doubling on back from another fragment
+                items.clear()
+                mainList.forEach { items.add(it.toRecyclerViewItem()) }
 
-        //If there is something in DB, take information for RecyclerView and make it.
-        if (db.coffeeDao.countType() > 0) {
-            val mainList = db.coffeeDao.getAllPreviewItems()
-            //clean ITEMS to prevent doubling on back from another fragment
-            items.clear()
-            mainList.forEach { items.add(it.toRecyclerViewItem()) }
+                items.sortBy { items -> items.rating }
+                items.reverse()
 
-            items.sortBy { items -> items.rating }
-            items.reverse()
+                itemAdapter.clear()
+                itemAdapter.add(items)
+                binding.recyclerView.layoutManager = LinearLayoutManager(context)
+                binding.recyclerView.adapter = fastAdapter
 
-            itemAdapter.clear()
-            itemAdapter.add(items)
-            binding.recyclerView.layoutManager = LinearLayoutManager(context)
-            binding.recyclerView.adapter = fastAdapter
+            }
         }
         //OnClick - go to ItemFragment
         fastAdapter.onClickListener = { view, adapter, item, position ->
@@ -96,7 +102,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
                     Toast.makeText(context, item.title, Toast.LENGTH_SHORT).show()
                 }
                 R.id.menu_recycler_delete -> {
-                    deleteItem(uid)
+                    lifecycleScope.launch { deleteItem(uid) }
                 }
             }
             true
@@ -104,14 +110,16 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         popup.show()
     }
 
-    private fun deleteItem(uid: Int) {
+    private suspend fun deleteItem(uid: Int) {
         //delete item from database
         val db = CoffeeDatabase.getInstance(requireActivity().applicationContext)
         db.coffeeDao.deleteItemById(uid)
         //delete photo from storage
-        val itemToDelete = items.filter { RecyclerViewItem -> RecyclerViewItem.uid == uid } [0]
+        val itemToDelete = items.filter { RecyclerViewItem -> RecyclerViewItem.uid == uid }[0]
         val fileToDelete = File(itemToDelete.photoUri!!)
-        if (fileToDelete.exists() && itemToDelete.photoUri != "android.resource://com.example.coffeed/drawable/coffee_photo" ) { fileToDelete.delete()}
+        if (fileToDelete.exists() && itemToDelete.photoUri != "android.resource://com.example.coffeed/drawable/coffee_photo") {
+            fileToDelete.delete()
+        }
         //delete item from RecyclerView adapter
         items.removeIf { RecyclerViewItem -> RecyclerViewItem.uid == uid }
         itemAdapter.clear()

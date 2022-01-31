@@ -46,9 +46,9 @@ class RecyclerViewItem(
                 .into(photo)
             rating.rating = item.rating ?: 0F
             when (item.brewType) {
-                "Espresso" -> brewType.setImageResource(R.drawable.espresso)
-                "Pourover" -> brewType.setImageResource(R.drawable.pourover)
-                "Dzezva" -> brewType.setImageResource(R.drawable.coffee_placeholder)
+                "Espresso" -> brewType.setImageResource(R.drawable.ic_espresso)
+                "Pourover" -> brewType.setImageResource(R.drawable.ic_pourover)
+                "Dzezva" -> brewType.setImageResource(R.drawable.ic_jezva)
                 "Moka" -> brewType.setImageResource(R.drawable.coffee_placeholder)
             }
 

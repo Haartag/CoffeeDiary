@@ -99,7 +99,7 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile).toString()
-                    Toast.makeText(requireContext(), "photo saved in: $savedUri", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(requireContext(), "photo saved in: $savedUri", Toast.LENGTH_LONG).show()
                     safeArgsToInputDescriptionFragment(savedUri)
                 }
 

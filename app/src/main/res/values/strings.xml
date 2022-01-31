@@ -38,7 +38,7 @@
     <string-array name="coffeeTypes">
         <item>Espresso</item>
         <item>Pourover</item>
-        <item>Dzezva</item>
+        <item>Jezva</item>
         <item>Moka</item>
     </string-array>
 </resources>
