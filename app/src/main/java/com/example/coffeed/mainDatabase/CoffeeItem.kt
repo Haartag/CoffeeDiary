@@ -1,6 +1,5 @@
-package com.example.coffeed.database
+package com.example.coffeed.mainDatabase
 
-import android.net.Uri
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -13,9 +12,6 @@ data class CoffeeItem(
     @ColumnInfo val name: String,
     @ColumnInfo val manufacturer: String,
     @ColumnInfo val type: String,
-    @ColumnInfo val rating: Int,
-    @ColumnInfo val shortDescription: String,
-    @ColumnInfo val longDescription: String,
-    //@ColumnInfo val grindPhoto: String,
-    //@ColumnInfo val additionalDescription: String
+    @ColumnInfo val rating: Float,
+    @ColumnInfo val description: String
 )

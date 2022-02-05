@@ -3,8 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/cardalike"
     android:layout_height="160dp"
-    android:layout_marginBottom="4dp">
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp"
+    android:layout_marginStart="3dp"
+    android:layout_marginEnd="3dp"
+    android:elevation="8dp">
 
     <ImageView
         android:id="@+id/coffeeCardPhoto"
@@ -19,41 +24,25 @@
 
     <TextView
         android:id="@+id/coffeeCardName"
+        style="@style/BigText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:layout_marginTop="4dp"
+        android:text=""
         app:layout_constraintStart_toEndOf="@+id/coffeeCardPhoto"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/coffeeCardManufacturer"
+        style="@style/MediumText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/coffeeCardName" />
-
-    <ImageView
-        android:id="@+id/coffeeCardRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/rating_placeholder" />
-
-    <TextView
-        android:id="@+id/coffeeCardRatingTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/coffeeCardRating"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="@+id/coffeeCardName"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeCardName" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -61,4 +50,24 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.3" />
+
+    <RatingBar
+        android:id="@+id/itemRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:isIndicator="true"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeCardManufacturer" />
+
+    <ImageView
+        android:id="@+id/brewType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:tint="@color/secondary_purple_dark1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/coffee_placeholder" />
 </androidx.constraintlayout.widget.ConstraintLayout>

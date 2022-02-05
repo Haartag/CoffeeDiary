@@ -4,7 +4,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -12,12 +11,14 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.transition.Slide
-import com.example.coffeed.Constants.FILE_NAME_FORMAT
-import com.example.coffeed.Constants.REQUIRED_PERMISSIONS
-import com.example.coffeed.Constants.TAG
+import com.example.coffeed.data.Constants.FILE_NAME_FORMAT
+import com.example.coffeed.data.Constants.REQUIRED_PERMISSIONS
+import com.example.coffeed.data.Constants.TAG
 import com.example.coffeed.databinding.FragmentCoffeePhotoBinding
 import java.io.File
 import java.text.SimpleDateFormat
@@ -29,6 +30,7 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
 
     private lateinit var binding: FragmentCoffeePhotoBinding
     private var fragmentCoffeePhotoBinding: FragmentCoffeePhotoBinding? = null
+    private val args: CoffeePhotoFragmentArgs by navArgs()
 
     private var imageCapture: ImageCapture? = null
     private lateinit var outputDirectory: File
@@ -46,7 +48,9 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
         fragmentCoffeePhotoBinding = binding
 
         //Default Uri, cause SafeArgs problems with defaults.
-        val defaultUri = "android.resource://com.example.coffeed/drawable/coffee_photo"
+        var defaultCoffeePlaceholderUri =
+            "android.resource://com.example.coffeed/drawable/coffee_photo"
+
 
         outputDirectory = getOutputDirectory()
         cameraExecutor = Executors.newSingleThreadExecutor()
@@ -57,10 +61,18 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
         binding.makePhotoButton.setOnClickListener {
             takePhoto()
         }
+        //if from detailed item fragment
+        if (args.photoType == 1) {
+            binding.cameraText.text = getText(R.string.camera_hint_2)
+            defaultCoffeePlaceholderUri =
+                "android.resource://com.example.coffeed/drawable/details_photo"
+        }
+
         binding.skipText.setOnClickListener {
-            safeArgsToInputDescriptionFragment(defaultUri)
+            safeArgsToNextFragment(defaultCoffeePlaceholderUri, args.photoType)
         }
     }
+
     //request permission.
     //ToDo: Change it
     private val requestPermission =
@@ -73,6 +85,7 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
                 Log.d("LOG_TAG", "permission denied by the user")
             }
         }
+
     //Get directory to store photos
     private fun getOutputDirectory(): File {
         val mediaDir = activity?.externalMediaDirs?.firstOrNull()?.let { mFile ->
@@ -99,8 +112,9 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile).toString()
-                    Toast.makeText(requireContext(), "photo saved in: $savedUri", Toast.LENGTH_LONG).show()
-                    safeArgsToInputDescriptionFragment(savedUri)
+                    //Toast.makeText(requireContext(), "photo saved in: $savedUri", Toast.LENGTH_LONG).show()
+
+                    safeArgsToNextFragment(savedUri, args.photoType)
                 }
 
                 override fun onError(exception: ImageCaptureException) {
@@ -109,6 +123,7 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
 
             })
     }
+
     //Default CameraX camera start
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
@@ -133,8 +148,12 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
     }
 
     //pass placeholder Uri to next Fragment
-    private fun safeArgsToInputDescriptionFragment(destination: String){
-        val action = CoffeePhotoFragmentDirections.actionCoffeePhotoFragmentToInputDescriptionFragment(destination)
+    private fun safeArgsToNextFragment(attachment: String, direction: Int) {
+        var action = CoffeePhotoFragmentDirections.actionCoffeePhotoFragmentToInputDescriptionFragment(attachment)
+        if (direction == 1) {
+            Log.d(TAG, "safeArgsToNextFragment: ${args.mainUid}")
+            action = CoffeePhotoFragmentDirections.actionCoffeePhotoFragmentToInputDetailsFragment(attachment, args.mainUid)
+        }
         findNavController().navigate(action)
     }
 

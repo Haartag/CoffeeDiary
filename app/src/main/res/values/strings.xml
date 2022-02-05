@@ -22,20 +22,25 @@
     <string name="disable_animation">Disable animation</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="camera_hint">Step 1. \n Take a photo of your coffee package.</string>
+    <string name="camera_hint_1">Step 1. \n Take a photo of your coffee package.</string>
+    <string name="camera_hint_2">Step 1. \n Add a photo to the description.</string>
     <string name="take_photo_button">take a photo</string>
     <string name="name_of_coffee">Name of coffee</string>
     <string name="manufacturer_of_coffee">Manufacturer of coffee</string>
-    <string name="short_description_of_coffee">Short description of coffee</string>
-    <string name="long_description_of_coffee">Long description of coffee</string>
+    <string name="description_of_coffee">Description of coffee</string>
     <string name="submit">Submit</string>
     <string name="skip_photo"><u>skip photo</u></string>
     <string name="delete_this"><font fgcolor='#FF1400'>Delete this</font></string>
+    <string name="all_additional_information">All additional information</string>
+    <string name="step_2">Step 2. \n Enter the name and manufacturer of the coffee, the brew type, and rate it.</string>
+    <string name="step_3">Step 3. \n Enter description of the coffee.</string>
+    <string name="coffee_diary">Coffee diary</string>
+    <string name="detailed_information"><u>Detailed information</u></string>
 
     <string-array name="coffeeTypes">
         <item>Espresso</item>
         <item>Pourover</item>
-        <item>Dzezva</item>
+        <item>Jezva</item>
         <item>Moka</item>
     </string-array>
 </resources>
