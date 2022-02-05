@@ -1,4 +1,4 @@
-package com.example.coffeed
+package com.example.coffeed.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import com.example.coffeed.R
 
 internal class SpinnerAdapter(context: Context, states: List<String>) :
     ArrayAdapter<String?>(context, R.layout.spinner_selected_item, states) {

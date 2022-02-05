@@ -1,4 +1,4 @@
-package com.example.coffeed
+package com.example.coffeed.data
 
 import android.Manifest
 

@@ -1,9 +1,8 @@
-package com.example.coffeed.database
+package com.example.coffeed.mainDatabase
 
 import androidx.room.*
-import com.example.coffeed.ItemCard
-import com.example.coffeed.PreviewItemCard
-import com.example.coffeed.RecyclerViewItem
+import com.example.coffeed.data.ItemCard
+import com.example.coffeed.data.PreviewItemCard
 
 
 @Dao
@@ -11,11 +10,20 @@ interface CoffeeDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun add(item: CoffeeItem)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun add(item: DetailedItem)
+
     @Update
     suspend fun update(item: CoffeeItem)
 
+    @Update
+    suspend fun update(item: DetailedItem)
+
     @Delete
     suspend fun delete(item: CoffeeItem)
+
+    @Delete
+    suspend fun delete(item: DetailedItem)
 
     @Query("SELECT * FROM coffeeDB")
     suspend fun getAll(): Array<CoffeeItem>
@@ -37,4 +45,11 @@ interface CoffeeDAO {
 
     @Query("DELETE FROM coffeeDB WHERE uid = :uid")
     suspend fun deleteItemById(uid: Int)
+
+    @Transaction
+    @Query("SELECT * FROM coffeeDB WHERE uid = :uid")
+    suspend fun getDetailedItems(uid: Int): List<CoffeeWithDetails>
+
+    @Query("SELECT name FROM coffeeDB WHERE uid = :uid")
+    suspend fun getNameById(uid: Int): String
 }

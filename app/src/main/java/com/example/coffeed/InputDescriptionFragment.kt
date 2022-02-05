@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.Slide
+import com.example.coffeed.adapters.SpinnerAdapter
+import com.example.coffeed.data.ItemCard
 import com.example.coffeed.databinding.FragmentInputDescriptionBinding
 
 class InputDescriptionFragment : Fragment(R.layout.fragment_input_description) {
@@ -54,8 +56,7 @@ class InputDescriptionFragment : Fragment(R.layout.fragment_input_description) {
                 manufacturer = binding.manufacturerOfCoffeeEditText.text.toString(),
                 type = selectedBrewType,//binding.coffeeTypeSpinner.selectedItem.toString(),
                 rating = binding.ratingBar.rating,
-                shortDescription = "",//binding.shortDescriptionEditText.text.toString(),
-                longDescription = ""//binding.longDescriptionEditText.text.toString()
+                description = "",//binding.shortDescriptionEditText.text.toString()
             )
             val action = InputDescriptionFragmentDirections.actionInputDescriptionFragmentToInputDescriptionFragment2(coffeeItemCard)
             findNavController().navigate(action)

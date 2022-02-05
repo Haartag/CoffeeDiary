@@ -1,27 +1,23 @@
 package com.example.coffeed
 
-import android.content.ContentValues.TAG
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.Slide
-import com.example.coffeed.database.CoffeeDatabase
-import com.example.coffeed.database.CoffeeItem
+import com.example.coffeed.adapters.RecyclerViewItem
+import com.example.coffeed.data.PreviewItemCard
+import com.example.coffeed.mainDatabase.CoffeeDatabase
 import com.example.coffeed.databinding.FragmentMainScreenBinding
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import kotlinx.coroutines.launch
 import java.io.File
-import java.net.URI
 
 class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
 
@@ -36,6 +32,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         super.onCreate(savedInstanceState)
         enterTransition = Slide()
         exitTransition = Slide()
+
     }
 
 

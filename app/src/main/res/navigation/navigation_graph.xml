@@ -33,7 +33,14 @@
         android:id="@+id/detailedItemFragment"
         android:name="com.example.coffeed.DetailedItemFragment"
         android:label="fragment_detailed_item"
-        tools:layout="@layout/fragment_detailed_item" />
+        tools:layout="@layout/fragment_detailed_item" >
+        <argument
+            android:name="main_uid"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_detailedItemFragment_to_coffeePhotoFragment"
+            app:destination="@id/coffeePhotoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.coffeed.SettingsFragment"
@@ -46,6 +53,17 @@
         <action
             android:id="@+id/action_coffeePhotoFragment_to_inputDescriptionFragment"
             app:destination="@id/inputDescriptionFragment" />
+        <argument
+            android:name="photoType"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_coffeePhotoFragment_to_inputDetailsFragment"
+            app:destination="@id/inputDetailsFragment" />
+        <argument
+            android:name="main_uid"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/inputDescriptionFragment"
@@ -70,6 +88,22 @@
             app:destination="@id/mainScreenFragment" />
         <argument
             android:name="halfItem"
-            app:argType="com.example.coffeed.ItemCard" />
+            app:argType="com.example.coffeed.data.ItemCard" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputDetailsFragment"
+        android:name="com.example.coffeed.InputDetailsFragment"
+        android:label="fragment_input_details"
+        tools:layout="@layout/fragment_input_details" >
+        <argument
+            android:name="photoUri"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_inputDetailsFragment_to_detailedItemFragment"
+            app:destination="@id/detailedItemFragment" />
+        <argument
+            android:name="main_uid"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 </navigation>

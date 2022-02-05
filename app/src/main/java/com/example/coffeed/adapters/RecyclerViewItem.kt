@@ -1,12 +1,12 @@
-package com.example.coffeed
+package com.example.coffeed.adapters
 
-import android.content.Context
 import android.net.Uri
 import android.view.View
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.example.coffeed.R
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.items.AbstractItem
 
@@ -24,7 +24,7 @@ class RecyclerViewItem(
     override val layoutRes: Int
         get() = R.layout.item_card
 
-    override fun getViewHolder(v: View): RecyclerViewItem.ViewHolder {
+    override fun getViewHolder(v: View): ViewHolder {
         return ViewHolder(v)
     }
 

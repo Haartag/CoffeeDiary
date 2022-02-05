@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         setupBottomNavMenu(navController)
 
+
     }
 
     private fun setupBottomNavMenu(navController: NavController) {

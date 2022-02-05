@@ -20,7 +20,7 @@
         android:id="@+id/cameraText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/camera_hint"
+        android:text="@string/camera_hint_1"
         style="@style/InputHintText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

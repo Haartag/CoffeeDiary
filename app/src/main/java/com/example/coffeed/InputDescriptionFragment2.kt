@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.Slide
-import com.example.coffeed.database.CoffeeDatabase
-import com.example.coffeed.database.CoffeeItem
+import com.example.coffeed.data.ItemCard
+import com.example.coffeed.mainDatabase.CoffeeDatabase
+import com.example.coffeed.mainDatabase.CoffeeItem
 import com.example.coffeed.databinding.FragmentInputDescription2Binding
-import com.example.coffeed.databinding.FragmentInputDescriptionBinding
+import com.example.coffeed.mainDatabase.DetailedItem
 import kotlinx.coroutines.launch
 
 class InputDescriptionFragment2 : Fragment(R.layout.fragment_input_description_2) {
@@ -38,10 +38,9 @@ class InputDescriptionFragment2 : Fragment(R.layout.fragment_input_description_2
                 manufacturer = args.halfItem.manufacturer,
                 type = args.halfItem.type,
                 rating = args.halfItem.rating,
-                shortDescription = binding.shortDescriptionEditText.text.toString(),
-                longDescription = binding.longDescriptionEditText.text.toString()
+                description = binding.shortDescriptionEditText.text.toString()
             )
-            //Place item in database, if additional data canceled
+            //Place item in database
             val db = CoffeeDatabase.getInstance(requireActivity().applicationContext)
             val input = CoffeeItem(
                 0,
@@ -50,8 +49,7 @@ class InputDescriptionFragment2 : Fragment(R.layout.fragment_input_description_2
                 coffeeItemCard.manufacturer,
                 coffeeItemCard.type,
                 coffeeItemCard.rating,
-                coffeeItemCard.shortDescription,
-                coffeeItemCard.longDescription,
+                coffeeItemCard.description
             )
             lifecycleScope.launch { db.coffeeDao.add(input) }
             findNavController().navigate(R.id.action_inputDescriptionFragment2_to_mainScreenFragment)

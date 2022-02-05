@@ -20,11 +20,13 @@
         <entry key="..\:/Users/F16/Documents/GitHub/CoffeeDiary/app/src/main/res/drawable/pourover.xml" value="0.512" />
         <entry key="..\:/Users/F16/Documents/GitHub/CoffeeDiary/app/src/main/res/drawable/spinner.xml" value="0.5703125" />
         <entry key="..\:/Users/F16/Documents/GitHub/CoffeeDiary/app/src/main/res/layout/activity_main.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/F16/Documents/GitHub/CoffeeDiary/app/src/main/res/layout/detailed_page.xml" value="0.4287037037037037" />
         <entry key="..\:/Users/F16/Documents/GitHub/CoffeeDiary/app/src/main/res/layout/fragment_coffee_photo.xml" value="0.5541666666666667" />
-        <entry key="..\:/Users/F16/Documents/GitHub/CoffeeDiary/app/src/main/res/layout/fragment_detailed_item.xml" value="0.5541666666666667" />
-        <entry key="..\:/Users/F16/Documents/GitHub/CoffeeDiary/app/src/main/res/layout/fragment_input_description.xml" value="0.5" />
+        <entry key="..\:/Users/F16/Documents/GitHub/CoffeeDiary/app/src/main/res/layout/fragment_detailed_item.xml" value="0.22" />
+        <entry key="..\:/Users/F16/Documents/GitHub/CoffeeDiary/app/src/main/res/layout/fragment_input_description.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/F16/Documents/GitHub/CoffeeDiary/app/src/main/res/layout/fragment_input_description_2.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/F16/Documents/GitHub/CoffeeDiary/app/src/main/res/layout/fragment_input_detailed_description.xml" value="0.25" />
+        <entry key="..\:/Users/F16/Documents/GitHub/CoffeeDiary/app/src/main/res/layout/fragment_input_details.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/F16/Documents/GitHub/CoffeeDiary/app/src/main/res/layout/fragment_item.xml" value="0.28888888888888886" />
         <entry key="..\:/Users/F16/Documents/GitHub/CoffeeDiary/app/src/main/res/layout/fragment_main_screen.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/F16/Documents/GitHub/CoffeeDiary/app/src/main/res/layout/item_card.xml" value="0.5541666666666667" />
