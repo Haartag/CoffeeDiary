@@ -49,12 +49,8 @@ class InputDetailsFragment : Fragment(R.layout.fragment_input_details) {
                 )
                 db.coffeeDao.add(detailedItemCard)
             }
-
-            /**
-             * PROBLEM HERE!!!
-             */
-            //findNavController().navigate(R.id.action_inputDetailsFragment_to_detailedItemFragment)
-
+            val action = InputDetailsFragmentDirections.actionInputDetailsFragmentToDetailedItemFragment(args.mainUid)
+            findNavController().navigate(action)
         }
     }
 }

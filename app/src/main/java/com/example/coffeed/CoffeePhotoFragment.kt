@@ -26,6 +26,10 @@ import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
+/**
+ * Make photo, save it in external storage and make URI for it.
+ */
+
 class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
 
     private lateinit var binding: FragmentCoffeePhotoBinding

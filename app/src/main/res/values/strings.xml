@@ -1,27 +1,15 @@
 <resources>
     <string name="app_name">CoffeeD</string>
-    <!-- TODO: Remove or change this placeholder text -->
-
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
+    <string name="header">Main</string>
+    <!-- Preferences -->
     <string name="signature_title">Your signature</string>
     <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="photo_quality">Better photo quality</string>
     <string name="photo_quality_summary">Better photo quality requires more memory</string>
     <string name="photo">Photo</string>
     <string name="disable_animation">Disable animation</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Main text -->
     <string name="camera_hint_1">Step 1. \n Take a photo of your coffee package.</string>
     <string name="camera_hint_2">Step 1. \n Add a photo to the description.</string>
     <string name="take_photo_button">take a photo</string>
@@ -40,7 +28,8 @@
     <string-array name="coffeeTypes">
         <item>Espresso</item>
         <item>Pourover</item>
-        <item>Jezva</item>
         <item>Moka</item>
+        <item>Jezva</item>
+
     </string-array>
 </resources>

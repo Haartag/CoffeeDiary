@@ -10,6 +10,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.coffeed.R
 
+/**
+ * Adapter for custom Spinner, InputDescriptionFragment
+ */
+
 internal class SpinnerAdapter(context: Context, states: List<String>) :
     ArrayAdapter<String?>(context, R.layout.spinner_selected_item, states) {
 
@@ -39,7 +43,7 @@ internal class SpinnerAdapter(context: Context, states: List<String>) :
             "Espresso" -> (R.drawable.ic_espresso)
             "Pourover" -> (R.drawable.ic_pourover)
             "Jezva" -> (R.drawable.ic_jezva)
-            //"Moka" -> "ic_moka"
+            "Moka" -> (R.drawable.ic_moka)
             else -> (R.drawable.coffee_placeholder)
         }
 

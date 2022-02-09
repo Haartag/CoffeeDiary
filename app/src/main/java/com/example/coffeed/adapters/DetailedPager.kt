@@ -12,6 +12,10 @@ import com.example.coffeed.R
 import com.example.coffeed.data.DetailsItemCard
 
 
+/**
+ * Adapter for ViewPager, DetailedItemFragment.
+ */
+
 class PagerAdapter(
     private val input: List<DetailsItemCard>,
     private val clickListener: (Int) -> Unit

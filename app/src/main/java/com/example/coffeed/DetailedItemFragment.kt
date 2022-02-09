@@ -41,6 +41,7 @@ class DetailedItemFragment : Fragment(R.layout.fragment_detailed_item) {
         //add first card with add button
         details.add(DetailsItemCard(-1, "", "addNew", "", -1))
 
+        //take cards from database
         lifecycleScope.launch {
             val testOut = db.coffeeDao.getDetailedItems(args.mainUid)
 
@@ -63,6 +64,9 @@ class DetailedItemFragment : Fragment(R.layout.fragment_detailed_item) {
                     val action = DetailedItemFragmentDirections.actionDetailedItemFragmentToCoffeePhotoFragment(1, args.mainUid)
                     findNavController().navigate(action)
                 }
+            }
+            if (details.size > 1) {
+                binding.viewPager.currentItem = 1
             }
         }
 
