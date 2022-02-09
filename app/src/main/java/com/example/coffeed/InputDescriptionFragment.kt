@@ -29,24 +29,25 @@ class InputDescriptionFragment : Fragment(R.layout.fragment_input_description) {
         fragmentInputDescriptionBinding = binding
 
         //set spinner icons
-        val brewTypes: List<String> = ArrayList(listOf(*resources.getStringArray(R.array.coffeeTypes)))
+        val brewTypes: List<String> =
+            ArrayList(listOf(*resources.getStringArray(R.array.coffeeTypes)))
         val adapter = SpinnerAdapter(requireContext(), brewTypes)
         adapter.setDropDownViewResource(R.layout.item_spinner)
         binding.coffeeTypeSpinner.adapter = adapter
 
-        binding.coffeeTypeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                adapterView: AdapterView<*>?,
-                view: View?,
-                i: Int,
-                l: Long
-            ) {
-                selectedBrewType = brewTypes[i]
-                //Toast.makeText(requireContext(), "You selected: $selectedBrewType", Toast.LENGTH_LONG).show()
-            }
+        binding.coffeeTypeSpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    adapterView: AdapterView<*>?,
+                    view: View?,
+                    i: Int,
+                    l: Long
+                ) {
+                    selectedBrewType = brewTypes[i]
+                }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
 
         //Make half ItemCard from collected data, then transfer it to next Fragment
         binding.submitButton.setOnClickListener {
@@ -54,11 +55,14 @@ class InputDescriptionFragment : Fragment(R.layout.fragment_input_description) {
                 coffeePhoto = args.photoUri,
                 name = binding.nameOfCoffeeEditText.text.toString(),
                 manufacturer = binding.manufacturerOfCoffeeEditText.text.toString(),
-                type = selectedBrewType,//binding.coffeeTypeSpinner.selectedItem.toString(),
+                type = selectedBrewType,
                 rating = binding.ratingBar.rating,
-                description = "",//binding.shortDescriptionEditText.text.toString()
+                description = ""
             )
-            val action = InputDescriptionFragmentDirections.actionInputDescriptionFragmentToInputDescriptionFragment2(coffeeItemCard)
+            val action =
+                InputDescriptionFragmentDirections.actionInputDescriptionFragmentToInputDescriptionFragment2(
+                    coffeeItemCard
+                )
             findNavController().navigate(action)
         }
 

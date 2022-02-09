@@ -1,21 +1,14 @@
 package com.example.coffeed
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.Slide
-import com.example.coffeed.data.DetailsItemCard
-import com.example.coffeed.data.ItemCard
 import com.example.coffeed.databinding.FragmentInputDescription2Binding
 import com.example.coffeed.mainDatabase.CoffeeDatabase
-import com.example.coffeed.mainDatabase.CoffeeItem
 import com.example.coffeed.mainDatabase.DetailedItem
 import kotlinx.coroutines.launch
 
@@ -38,7 +31,6 @@ class InputDetailsFragment : Fragment(R.layout.fragment_input_details) {
         //Place item in database
         binding.submitButton.setOnClickListener {
             val db = CoffeeDatabase.getInstance(requireActivity().applicationContext)
-            Log.d(TAG, "onViewCreated: ${args.mainUid} ToNext")
             val oldUid = args.mainUid
             lifecycleScope.launch {
                 val detailedItemCard = DetailedItem(
@@ -49,7 +41,8 @@ class InputDetailsFragment : Fragment(R.layout.fragment_input_details) {
                 )
                 db.coffeeDao.add(detailedItemCard)
             }
-            val action = InputDetailsFragmentDirections.actionInputDetailsFragmentToDetailedItemFragment(args.mainUid)
+            val action =
+                InputDetailsFragmentDirections.actionInputDetailsFragmentToDetailedItemFragment(args.mainUid)
             findNavController().navigate(action)
         }
     }

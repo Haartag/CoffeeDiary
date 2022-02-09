@@ -11,7 +11,6 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
-import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -153,10 +152,16 @@ class CoffeePhotoFragment : Fragment(R.layout.fragment_coffee_photo) {
 
     //pass placeholder Uri to next Fragment
     private fun safeArgsToNextFragment(attachment: String, direction: Int) {
-        var action = CoffeePhotoFragmentDirections.actionCoffeePhotoFragmentToInputDescriptionFragment(attachment)
+        var action =
+            CoffeePhotoFragmentDirections.actionCoffeePhotoFragmentToInputDescriptionFragment(
+                attachment
+            )
         if (direction == 1) {
             Log.d(TAG, "safeArgsToNextFragment: ${args.mainUid}")
-            action = CoffeePhotoFragmentDirections.actionCoffeePhotoFragmentToInputDetailsFragment(attachment, args.mainUid)
+            action = CoffeePhotoFragmentDirections.actionCoffeePhotoFragmentToInputDetailsFragment(
+                attachment,
+                args.mainUid
+            )
         }
         findNavController().navigate(action)
     }

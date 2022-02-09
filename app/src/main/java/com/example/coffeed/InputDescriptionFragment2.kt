@@ -8,10 +8,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.Slide
 import com.example.coffeed.data.ItemCard
+import com.example.coffeed.databinding.FragmentInputDescription2Binding
 import com.example.coffeed.mainDatabase.CoffeeDatabase
 import com.example.coffeed.mainDatabase.CoffeeItem
-import com.example.coffeed.databinding.FragmentInputDescription2Binding
-import com.example.coffeed.mainDatabase.DetailedItem
 import kotlinx.coroutines.launch
 
 class InputDescriptionFragment2 : Fragment(R.layout.fragment_input_description_2) {

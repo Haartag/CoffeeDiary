@@ -1,5 +1,7 @@
 package com.example.coffeed.adapters
 
+import android.content.Context
+import android.content.res.Resources
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -32,7 +34,7 @@ class PagerAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         if (input[position].uid == -1) {
-            holder.coffeeName.text = "Add new details"
+            holder.coffeeName.setText(R.string.add_new)
             Glide.with(holder.image.context)
                 .load(R.drawable.addnew_photo)
                 .into(holder.image)

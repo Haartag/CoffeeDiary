@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_recycler_change"
-        android:title="Change"/>
+        android:title="@string/change"/>
     <item
         android:id="@+id/menu_recycler_delete"
         android:title="@string/delete_this"/>

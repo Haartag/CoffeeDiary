@@ -10,9 +10,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.transition.Slide
 import com.bumptech.glide.Glide
 import com.example.coffeed.data.ItemCard
-import com.example.coffeed.mainDatabase.CoffeeDatabase
 import com.example.coffeed.databinding.FragmentItemBinding
-import com.example.coffeed.mainDatabase.DetailedItem
+import com.example.coffeed.mainDatabase.CoffeeDatabase
 import kotlinx.coroutines.launch
 
 
@@ -20,7 +19,7 @@ class ItemFragment : Fragment(R.layout.fragment_item) {
 
     private var fragmentItemBinding: FragmentItemBinding? = null
     private val args: ItemFragmentArgs by navArgs()
-    lateinit var itemCard: ItemCard
+    private lateinit var itemCard: ItemCard
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +48,8 @@ class ItemFragment : Fragment(R.layout.fragment_item) {
         }
 
         binding.detailedInformationButtonText.setOnClickListener {
-            val action = ItemFragmentDirections.actionItemFragmentToDetailedItemFragment(itemCard.uid)
+            val action =
+                ItemFragmentDirections.actionItemFragmentToDetailedItemFragment(itemCard.uid)
             findNavController().navigate(action)
         }
     }

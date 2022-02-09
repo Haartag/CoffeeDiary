@@ -40,10 +40,10 @@ internal class SpinnerAdapter(context: Context, states: List<String>) :
         val brewIcon: ImageView = row.findViewById(R.id.img)
 
         val iconAddress = when (brewTypesList[position]) {
-            "Espresso" -> (R.drawable.ic_espresso)
-            "Pourover" -> (R.drawable.ic_pourover)
-            "Jezva" -> (R.drawable.ic_jezva)
-            "Moka" -> (R.drawable.ic_moka)
+            getBrewTypeName(0) -> (R.drawable.ic_espresso)
+            getBrewTypeName(1) -> (R.drawable.ic_pourover)
+            getBrewTypeName(2) -> (R.drawable.ic_jezva)
+            getBrewTypeName(3) -> (R.drawable.ic_moka)
             else -> (R.drawable.coffee_placeholder)
         }
 
@@ -52,6 +52,10 @@ internal class SpinnerAdapter(context: Context, states: List<String>) :
         brewType.text = brewTypesList[position]
         brewIcon.setImageDrawable(res)
         return row
+    }
+    //take brew type, for localization
+    private fun getBrewTypeName(position: Int): String {
+        return context.resources.getStringArray(R.array.coffeeTypes)[position]
     }
 
 }
