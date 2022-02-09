@@ -3,9 +3,7 @@
  ToDO:
   - some refactoring - clean it!
   - share button
-  - localisation
-  - add moka icon
-  - remove deleted images from storage
+  - remove deleted images from storage - didnt work now?
   - some sql-safety?
   - some tests
  
@@ -13,5 +11,5 @@
   - Landscape orientation?
   - licenses page?
   - multiselection in coffee type spinner?
-  - in itemCard: remove photo, make photo-based background
+  - in itemCard: remove photo, make photo-based background?
  
