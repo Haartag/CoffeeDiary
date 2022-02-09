@@ -10,6 +10,10 @@ import com.example.coffeed.R
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.items.AbstractItem
 
+/**
+ * Adapter for RecyclerView, MainScreenFragment
+ */
+
 class RecyclerViewItem(
     val name: String? = null,
     val manufacturer: String? = null,
@@ -49,7 +53,7 @@ class RecyclerViewItem(
                 "Espresso" -> brewType.setImageResource(R.drawable.ic_espresso)
                 "Pourover" -> brewType.setImageResource(R.drawable.ic_pourover)
                 "Dzezva" -> brewType.setImageResource(R.drawable.ic_jezva)
-                "Moka" -> brewType.setImageResource(R.drawable.coffee_placeholder)
+                "Moka" -> brewType.setImageResource(R.drawable.ic_moka)
             }
 
         }
@@ -58,7 +62,6 @@ class RecyclerViewItem(
             name.text = null
             manufacturer.text = null
             photo.setImageDrawable(null)
-            //rating.rating = null
         }
 
     }

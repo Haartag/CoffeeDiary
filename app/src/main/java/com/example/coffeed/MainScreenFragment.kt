@@ -70,7 +70,6 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         //onLongClick - inflate item menu
         fastAdapter.onLongClickListener = { view, adapter, item, position ->
             showPopupMenu(view, item.uid!!)
-            Toast.makeText(activity, "$position, $item", Toast.LENGTH_SHORT).show()
             true
         }
     }

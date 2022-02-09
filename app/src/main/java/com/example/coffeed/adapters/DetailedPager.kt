@@ -1,5 +1,7 @@
 package com.example.coffeed.adapters
 
+import android.content.Context
+import android.content.res.Resources
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,10 @@ import com.bumptech.glide.Glide
 import com.example.coffeed.R
 import com.example.coffeed.data.DetailsItemCard
 
+
+/**
+ * Adapter for ViewPager, DetailedItemFragment.
+ */
 
 class PagerAdapter(
     private val input: List<DetailsItemCard>,
@@ -28,7 +34,7 @@ class PagerAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         if (input[position].uid == -1) {
-            holder.coffeeName.text = "Add new details"
+            holder.coffeeName.setText(R.string.add_new)
             Glide.with(holder.image.context)
                 .load(R.drawable.addnew_photo)
                 .into(holder.image)

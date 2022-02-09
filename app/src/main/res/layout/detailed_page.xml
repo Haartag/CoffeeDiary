@@ -15,8 +15,6 @@
         style="@style/BigText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Card_01"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +23,6 @@
         android:id="@+id/detailedImage"
         android:layout_width="135dp"
         android:layout_height="180dp"
-        android:src="@drawable/grind_photo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

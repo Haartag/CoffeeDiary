@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Кофейный дневник</string>
+    <!-- Preference Titles -->
+    <string name="header">Основное</string>
+    <!-- Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+    <string name="photo_quality">Better photo quality</string>
+    <string name="photo_quality_summary">Better photo quality requires more memory</string>
+    <string name="photo">Photo</string>
+    <string name="disable_animation">Disable animation</string>
+    <!-- Main text -->
+    <string name="camera_hint_1">Шаг 1. \n Сфотографируйте упаковку кофе.</string>
+    <string name="camera_hint_2">Шаг 1. \n Добавить фото к описанию.</string>
+    <string name="take_photo_button">фото</string>
+    <string name="name_of_coffee">Название кофе</string>
+    <string name="manufacturer_of_coffee">Производитель кофе</string>
+    <string name="description_of_coffee">Описание кофе</string>
+    <string name="submit">Отправить</string>
+    <string name="skip_photo"><u>пропустить фото</u></string>
+    <string name="delete_this"><font fgcolor='#FF1400'>Удалить это</font></string>
+    <string name="all_additional_information">Вся дополнительная информация</string>
+    <string name="step_2">Шаг 2. \n Введите название и производителя кофе, тип заваривания и оцени кофе.</string>
+    <string name="step_3">Шаг 3. \n Введите описание кофе.</string>
+    <string name="coffee_diary">Кофейный дневник</string>
+    <string name="detailed_information"><u>Подробнее</u></string>
+    <string name="main_screen">Основной экран</string>
+    <string name="add_new_coffee">Добавить кофе</string>
+    <string name="settings">Настройки</string>
+    <string name="change">Изменить</string>
+    <string name="add_new">Добавить подробности</string>
+
+    <string-array name="coffeeTypes">
+        <item>Эспрессо</item>
+        <item>Пуровер</item>
+        <item>Гейзерная</item>
+        <item>Турка</item>
+
+    </string-array>
+</resources>
