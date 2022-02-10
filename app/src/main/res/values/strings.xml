@@ -3,8 +3,6 @@
     <!-- Preference Titles -->
     <string name="header">Main</string>
     <!-- Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
     <string name="photo_quality">Better photo quality</string>
     <string name="photo_quality_summary">Better photo quality requires more memory</string>
     <string name="photo">Photo</string>
@@ -19,7 +17,6 @@
     <string name="submit">Submit</string>
     <string name="skip_photo"><u>skip photo</u></string>
     <string name="delete_this"><font fgcolor='#FF1400'>Delete this</font></string>
-    <string name="all_additional_information">All additional information</string>
     <string name="step_2">Step 2. \n Enter the name and manufacturer of the coffee, the brew type, and rate it.</string>
     <string name="step_3">Step 3. \n Enter description of the coffee.</string>
     <string name="coffee_diary">Coffee diary</string>
