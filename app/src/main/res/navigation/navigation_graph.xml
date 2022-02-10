@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainScreenFragment"
-        android:name="com.example.coffeed.MainScreenFragment"
+        android:name="com.valerytimofeev.coffeed.MainScreenFragment"
         android:label="fragment_main_screen"
         tools:layout="@layout/fragment_main_screen" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemFragment"
-        android:name="com.example.coffeed.ItemFragment"
+        android:name="com.valerytimofeev.coffeed.ItemFragment"
         android:label="fragment_item"
         tools:layout="@layout/fragment_item" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailedItemFragment"
-        android:name="com.example.coffeed.DetailedItemFragment"
+        android:name="com.valerytimofeev.coffeed.DetailedItemFragment"
         android:label="fragment_detailed_item"
         tools:layout="@layout/fragment_detailed_item" >
         <argument
@@ -43,11 +43,11 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.coffeed.SettingsFragment"
+        android:name="com.valerytimofeev.coffeed.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/coffeePhotoFragment"
-        android:name="com.example.coffeed.CoffeePhotoFragment"
+        android:name="com.valerytimofeev.coffeed.CoffeePhotoFragment"
         android:label="fragment_coffee_photo"
         tools:layout="@layout/fragment_coffee_photo" >
         <action
@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/inputDescriptionFragment"
-        android:name="com.example.coffeed.InputDescriptionFragment"
+        android:name="com.valerytimofeev.coffeed.InputDescriptionFragment"
         android:label="fragment_input_description"
         tools:layout="@layout/fragment_input_description" >
         <argument
@@ -80,7 +80,7 @@
     </fragment>
     <fragment
         android:id="@+id/inputDescriptionFragment2"
-        android:name="com.example.coffeed.InputDescriptionFragment2"
+        android:name="com.valerytimofeev.coffeed.InputDescriptionFragment2"
         android:label="fragment_input_description_2"
         tools:layout="@layout/fragment_input_description_2" >
         <action
@@ -88,11 +88,11 @@
             app:destination="@id/mainScreenFragment" />
         <argument
             android:name="halfItem"
-            app:argType="com.example.coffeed.data.ItemCard" />
+            app:argType="com.valerytimofeev.coffeed.data.ItemCard" />
     </fragment>
     <fragment
         android:id="@+id/inputDetailsFragment"
-        android:name="com.example.coffeed.InputDetailsFragment"
+        android:name="com.valerytimofeev.coffeed.InputDetailsFragment"
         android:label="fragment_input_details"
         tools:layout="@layout/fragment_input_details" >
         <argument
